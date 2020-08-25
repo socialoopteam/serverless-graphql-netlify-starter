@@ -1,6 +1,6 @@
-const { createLocalServer, dbConnect, createLambdaServer } = require("./server");
+const { createLocalServer, dbConnect } = require("./server");
 
-const server = createLambdaServer();
+const server = createLocalServer();
 
 server.listen().then(({ url }) => {
   dbConnect(
