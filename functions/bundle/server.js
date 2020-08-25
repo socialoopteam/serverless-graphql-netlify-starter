@@ -65,13 +65,17 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     hello: () => "Hi! Love from @songonpark 🤠.",
-    rooms: () => Room.find().sort({ price: 1 }),
-    reservations: () => Reservation.find().sort({ date: 1 }),
-    room: (_, { id }) => {
-      return Room.findById(id);
+    rooms: async () => {
+      return await Room.find().sort({ price: 1 });
     },
-    reservation: (_, { id }) => {
-      return Reservation.findById(id);
+    reservations: async () => {
+      return await Reservation.find().sort({ date: 1 });
+    },
+    room: async (_, { id }) => {
+      return await Room.findById(id);
+    },
+    reservation: async (_, { id }) => {
+      return await Reservation.findById(id);
     },
   },
   Mutation: {
